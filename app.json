@@ -1,6 +1,7 @@
 {
   "expo": {
     "name": "todo-app-v2",
+    "newArchEnabled": true,
     "slug": "todo-app-v2",
     "version": "1.0.0",
     "orientation": "portrait",

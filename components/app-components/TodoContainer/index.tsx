@@ -19,15 +19,20 @@ const TodoContainer = ({
   todo,
   toggleTodo,
   deleteTodo,
+  onDragStart,
+  isDragging,
   ...props
 }: {
   todo: Todo;
   toggleTodo: (id: string) => void;
   deleteTodo: (id: string) => void;
+  onDragStart?: () => void;
+  isDragging?: boolean;
 }) => {
   return (
     <HStack
       {...props}
+      style={[isDragging && { opacity: 0.5, transform: [{ scale: 1.05 }] }]}
       className="rounded-md hover:bg-secondary-200 justify-between items-center"
     >
       <Checkbox
@@ -37,6 +42,7 @@ const TodoContainer = ({
         value={todo.task}
         isChecked={todo.completed}
         className="pl-6 py-2 flex-1"
+        onLongPress={onDragStart}
       >
         <CheckboxIndicator>
           <CheckboxIcon as={CheckIcon} />
